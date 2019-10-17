@@ -14,7 +14,7 @@ enum Message {
 
 	private String message;
 
-	private Console console;
+	private Console console = new Console();
 
 	private Message(String message) {
 		this.message = message;

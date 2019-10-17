@@ -25,13 +25,13 @@ class ProposedCombinationTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
-        this.proposedCombination.colors = new Color[Combination.getWidth()];
+    //    this.proposedCombination.colors = new Color[Combination.getWidth()];
         this.proposedCombination.colors[0] = Color.BLUE;
         this.proposedCombination.colors[1] = Color.RED;
         this.proposedCombination.colors[2] = Color.YELLOW;
         this.proposedCombination.colors[3] = Color.GREEN;
 
-        this.proposedCombination2.colors = new Color[Combination.getWidth()];
+   //     this.proposedCombination2.colors = new Color[Combination.getWidth()];
         this.proposedCombination2.colors[0] = Color.BLUE;
         this.proposedCombination2.colors[1] = Color.BLUE;
         this.proposedCombination2.colors[2] = Color.ORANGE;
