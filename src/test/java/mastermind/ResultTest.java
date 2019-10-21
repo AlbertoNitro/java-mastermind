@@ -1,24 +1,23 @@
 package mastermind;
 
+import static org.junit.jupiter.api.Assertions.fail;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
 import santaTecla.utils.Console;
 
-import static org.junit.jupiter.api.Assertions.fail;
-
 class ResultTest {
+
     @Mock
     Console console;
 
     @InjectMocks
-    Result winnerResult = new Result(Combination.getWidth(), 0);
-
-    @InjectMocks
-    Result looserResult = new Result(0, Combination.getWidth());
+    Result result = new Result(2, 1);
 
     @BeforeEach
     void setUp() {
@@ -27,8 +26,8 @@ class ResultTest {
 
     @Test
     void testIsWinner() {
-        Assertions.assertFalse(looserResult.isWinner());
-        Assertions.assertTrue(winnerResult.isWinner());
+        Assertions.assertFalse(new Result(0, Combination.getWidth()).isWinner());
+        Assertions.assertTrue(new Result(Combination.getWidth(), 0).isWinner());
     }
 
     @Test

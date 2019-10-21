@@ -1,14 +1,16 @@
 package mastermind;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import santaTecla.utils.Console;
 
-import static org.junit.jupiter.api.Assertions.fail;
+import santaTecla.utils.Console;
 
 class ColorTest {
 
@@ -25,40 +27,22 @@ class ColorTest {
 
     @Test
     void testAllInitials() {
-        String initials = Color.allInitials();
-        Assertions.assertEquals("rbygop", initials);
+        assertEquals("rbygop", Color.allInitials());
     }
 
     @Test
     void testGetInstanceInt() {
-        Color result = Color.getInstance(0);
-        Assertions.assertEquals(Color.RED, result);
-        result = Color.getInstance(1);
-        Assertions.assertEquals(Color.BLUE, result);
-        result = Color.getInstance(2);
-        Assertions.assertEquals(Color.YELLOW, result);
-        result = Color.getInstance(3);
-        Assertions.assertEquals(Color.GREEN, result);
-        result = Color.getInstance(4);
-        Assertions.assertEquals(Color.ORANGE, result);
-        result = Color.getInstance(5);
-        Assertions.assertEquals(Color.PURPLE, result);
+        for(int i=0; i<Color.length(); i++){
+            assertEquals(Color.values()[i], Color.getInstance(i));
+        }
     }
 
     @Test
     void testGetInstanceChar() {
-        Color result = Color.getInstance('r');
-        Assertions.assertEquals(Color.RED, result);
-        result = Color.getInstance('b');
-        Assertions.assertEquals(Color.BLUE, result);
-        result = Color.getInstance('y');
-        Assertions.assertEquals(Color.YELLOW, result);
-        result = Color.getInstance('g');
-        Assertions.assertEquals(Color.GREEN, result);
-        result = Color.getInstance('o');
-        Assertions.assertEquals(Color.ORANGE, result);
-        result = Color.getInstance('p');
-        Assertions.assertEquals(Color.PURPLE, result);
+        String characters = "rbygop";
+        for(int i=0; i<characters.length(); i++){
+             assertEquals(Color.values()[i], Color.getInstance(characters.charAt(i)));
+        }
     }
 
     @Test

@@ -51,9 +51,4 @@ class SecretCombinationTest {
         fail();
     }
 
-    @Test
-    void testShuffleArray() {
-//        this.secretCombination.shuffleArray(new Color[]{Color.RED});
-        fail();
-    }
 }

@@ -1,15 +1,16 @@
 package mastermind;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import santaTecla.utils.Console;
 
-import static org.junit.jupiter.api.Assertions.fail;
+import santaTecla.utils.Console;
 
 class ProposedCombinationTest {
 
@@ -19,23 +20,9 @@ class ProposedCombinationTest {
     @InjectMocks
     ProposedCombination proposedCombination;
 
-    @InjectMocks
-    ProposedCombination proposedCombination2;
-
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
-    //    this.proposedCombination.colors = new Color[Combination.getWidth()];
-        this.proposedCombination.colors[0] = Color.BLUE;
-        this.proposedCombination.colors[1] = Color.RED;
-        this.proposedCombination.colors[2] = Color.YELLOW;
-        this.proposedCombination.colors[3] = Color.GREEN;
-
-   //     this.proposedCombination2.colors = new Color[Combination.getWidth()];
-        this.proposedCombination2.colors[0] = Color.BLUE;
-        this.proposedCombination2.colors[1] = Color.BLUE;
-        this.proposedCombination2.colors[2] = Color.ORANGE;
-        this.proposedCombination2.colors[3] = Color.GREEN;
     }
 
     @Test
@@ -53,22 +40,15 @@ class ProposedCombinationTest {
 
     @Test
     void testContainsColorAndPosition() {
-        boolean result = this.proposedCombination.contains(Color.RED);
-        Assertions.assertTrue(result);
-        result = this.proposedCombination2.contains(Color.RED);
-        Assertions.assertFalse(result);
+        assertTrue(new ProposedCombinationBuilder().characters("rybo").build().contains(Color.RED));
+        assertFalse(new ProposedCombinationBuilder().characters("rybo").build().contains(Color.PURPLE));
     }
 
     @Test
     void testContainsColor() {
-        boolean result = this.proposedCombination.contains(Color.RED, 0);
-        Assertions.assertFalse(result);
-        result = this.proposedCombination.contains(Color.RED, 1);
-        Assertions.assertTrue(result);
-        result = this.proposedCombination.contains(Color.RED, 2);
-        Assertions.assertFalse(result);
-        result = this.proposedCombination.contains(Color.RED, 3);
-        Assertions.assertFalse(result);
+        assertTrue(new ProposedCombinationBuilder().characters("oygr").build().contains(Color.RED,3));
+        assertTrue(new ProposedCombinationBuilder().characters("pybo").build().contains(Color.PURPLE,0));
+        assertFalse(new ProposedCombinationBuilder().characters("rybo").build().contains(Color.PURPLE,0));
     }
 
 }
