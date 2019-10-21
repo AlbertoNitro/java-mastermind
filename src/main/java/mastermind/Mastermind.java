@@ -19,10 +19,6 @@ public class Mastermind extends WithConsoleModel {
 		this.clear();
 	}
 
-	public static void main(String[] args) {
-		new Mastermind().play();
-	}
-
 	private void clear() {
 		this.secretCombination = new SecretCombination();
 		this.proposedCombinations = new ProposedCombination[Mastermind.MAX_LONG];
@@ -39,6 +35,7 @@ public class Mastermind extends WithConsoleModel {
 			do {
 				ProposedCombination proposedCombination = new ProposedCombination();
 				proposedCombination.read();
+				proposedCombination.write();
 				boolean added = false;
 				int i = 0;
 				while (!added && i < this.proposedCombinations.length) {
@@ -71,6 +68,10 @@ public class Mastermind extends WithConsoleModel {
 				this.clear();
 			}
 		} while (newGame);
+	}
+
+		public static void main(String[] args) {
+		new Mastermind().play();
 	}
 
 }

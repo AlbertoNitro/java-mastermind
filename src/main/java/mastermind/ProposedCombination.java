@@ -2,6 +2,10 @@ package mastermind;
 
 class ProposedCombination extends Combination {
 
+    ProposedCombination() {
+        super();
+    }
+
     void write() {
         for (Color color : this.colors) {
             color.write();
@@ -22,18 +26,16 @@ class ProposedCombination extends Combination {
                     if (color == null) {
                         error = Error.WRONG_CHARACTERS;
                     } else {
-                        int j = 0;
-                        boolean done = false;
-                        while (j < this.colors.length && !done) {
-                            if (this.colors[j] == color) {
-                                error = Error.DUPLICATED;
-                                done = true;
-                            }
-                            j++;
+                        for (int j = 0; j < i; j++) {
                             if (this.colors[j] == null) {
-                                this.colors[j] = color;
+                            } 
+                            if (color == this.colors[i]) {
+                                error = Error.DUPLICATED;
                             }
                         }
+                        if (error == null) {
+                            this.colors[i] = color;
+                        } 
                     }
                 }
             }
